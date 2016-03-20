@@ -13,6 +13,7 @@ defmodule Temperaturex.CLI do
   def main(argv) do
     argv
     |> parse_args
+    |> process
     nil
   end
 
@@ -31,6 +32,22 @@ defmodule Temperaturex.CLI do
       { _, [station], _ } -> station
       _ -> :help
     end
+  end
+
+
+  @doc """
+  Either displays help message or dispatches later
+  arguments processing to external function.
+  """
+  @spec process(:help) :: nil
+  @spec process(String.t) :: String.t
+  def process(:help) do
+     IO.puts """
+     usage: tempx <station name>
+     """
+  end
+  def process(station) do
+    station
   end
 
 end
