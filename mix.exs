@@ -5,6 +5,7 @@ defmodule Temperaturex.Mixfile do
     [app: :temperaturex,
      version: "0.0.1",
      elixir: "~> 1.2",
+     escript: escript_config,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps]
@@ -35,5 +36,9 @@ defmodule Temperaturex.Mixfile do
       {:earmark, ">= 0.0.0"},
       {:httpoison, "~> 0.8"}
     ]
+  end
+
+  defp escript_config do
+    [ main_module: Temperaturex.CLI]
   end
 end
