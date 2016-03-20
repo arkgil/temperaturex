@@ -29,7 +29,7 @@ defmodule Temperaturex.CLI do
     parse = OptionParser.parse(argv, switches: [help: :boolean], aliases: [h: :help])
     case parse do
       { [help: true], _, _ } -> :help
-      { _, [station], _ } -> station
+      { _, [station], _ } -> String.upcase station
       _ -> :help
     end
   end
