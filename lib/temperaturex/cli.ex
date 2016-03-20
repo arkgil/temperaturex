@@ -23,6 +23,7 @@ defmodule Temperaturex.CLI do
   * weather station name, in which case given name is returned
   * otherwise returns :help
   """
+  @spec parse_args(list) :: :help | String.t
   def parse_args(argv) do
     parse = OptionParser.parse(argv, switches: [help: :boolean], aliases: [h: :help])
     case parse do
