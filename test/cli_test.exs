@@ -8,8 +8,8 @@ defmodule CLITest do
     assert parse_args(["-h"]) == :help
   end
 
-  test "option is returned when one option is given" do
-    assert parse_args(["potato"]) == "potato"
+  test "upcased option is returned when one option is given" do
+    assert parse_args(["potato"]) == "POTATO"
   end
 
   test ":help is returned when two or more options are given" do
