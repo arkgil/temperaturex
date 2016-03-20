@@ -1,4 +1,5 @@
 defmodule Temperaturex.CLI do
+  import Temperaturex.WeatherConditions, only: [fetch: 1]
   @moduledoc """
   CLI module provides functionality of taking and parsing
   command line arguments, and processing these arguments
@@ -45,9 +46,16 @@ defmodule Temperaturex.CLI do
      IO.puts """
      usage: tempx <station name>
      """
+     System.halt(0)
   end
   def process(station) do
-    station
+    case fetch(station) do
+      {:ok, body} ->
+        body
+      {:error, _} ->
+        IO.puts "Sorry, an error occured"
+        System.halt(1)   
+    end
   end
 
 end
